@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Teste Html</title>
+</head>
+<body>
+
+	<header><h1>Web</h1></header>
+
+	<nav>
+		<a href="exercicios/teste.html">00 - Teste</a> | 
+		<a href="exercicios/temp.html">00 - Temp</a>
+	</nav>
+
+	<section id="conteudo"></section>
+	
+	<footer><br>Curso de Web Moderno</footer>
+
+	<script>
+		document.querySelectorAll('a').forEach( function (link) { //pega todos os a da pagina
+			const conteudo = document.getElementById('conteudo')
+			link.onclick = function(e) {
+				e.preventDefault() //previne a acao convencional do a
+				fetch(link.href) //requisicao AJAX - pega o link do a
+					.then(resp => resp.text()) //funcao que pega o conteudo html da pagina solicitada
+					.then(html => conteudo.innerHTML = html)
+			}
+		})
+	</script>
+
+</body>
+</html>	
