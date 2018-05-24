@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Imagens</title>
+	<style>
+		p{
+			position: absolute;
+			display: none;
+		}
+	</style>
+</head>
+<body>
+
+	<div wm-slider>
+		<p><img src="img/banner-1.jpg" alt=""></p>	
+		<p><img src="img/banner-2.jpg" alt=""></p>	
+		<p><img src="img/banner-3.jpg" alt=""></p>	
+	</div>
+
+	<script>
+		function mover(elem, inicio, fim, passo, callback) {
+			const novoInicio = inicio - passo
+			if (novoInicio >= fim) {
+				elem.style.left = novoInicio + 'px'
+				setTimeout(() => mover(elem, novoInicio, fim, passo, callback), 7)
+			} else {
+				callback()
+			}
+		}
+
+		const p = document.querySelector('[wm-slider] > p')
+		p.style.display = 'block'
+
+		mover(p, 1500, -1920, 5, () =>{
+			console.log('Terminou!')
+		})
+	</script>
+	
+</body>
+</html>
